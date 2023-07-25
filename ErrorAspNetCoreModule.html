@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solución de Errores .NET en IIS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Lato', sans-serif; }
+        h1 { color: #333; margin-top: 20px; }
+        p { line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Error en aplicación .NET 5+ en IIS</h1>
+        <p class="lead">
+            Si encuentras un error al intentar ejecutar una aplicación .NET 5+ en IIS, es posible que el problema esté relacionado con la falta del AspNetCoreModule.
+            Este módulo es necesario para que IIS pueda manejar las solicitudes para aplicaciones .NET Core y .NET 5+.
+        </p>
+        <div class="card bg-light mb-3">
+            <div class="card-body">
+                <h4 class="card-title">HTTP Error 500.19 - Internal Server Error</h4>
+                <p class="card-text">
+                    The requested page cannot be accessed because the related configuration data for the page is invalid.<br>
+                    Config Source: :
+                    <pre>-1:<br>0:</pre>
+                </p>
+            </div>
+			<img src="ErrorAspNetCoreModule.png" alt="ErrorAspNetCoreModule">
+        </div>
+        <h2>Solución</h2>
+        <p>
+            Debes instalar el .NET Core Hosting Bundle en tu servidor. Este paquete incluye el runtime de .NET, el runtime de ASP.NET Core y el AspNetCoreModule necesario para IIS.
+        </p>
+        <h2>Instalación</h2>
+        <p>
+            Ve al sitio oficial de descargas de .NET (<a href="https://dotnet.microsoft.com/download" target="_blank">https://dotnet.microsoft.com/download</a>) y descarga el .NET Core Hosting Bundle para la versión de .NET que estás utilizando.
+        </p>
+        <p>
+            Una vez que lo hayas descargado, ejecuta el instalador en tu servidor y sigue las instrucciones en pantalla para completar la instalación.
+        </p>
+        <p>
+            Cuando la instalación se haya completado, reinicia IIS. Puedes hacerlo desde la línea de comandos con el comando: <code>iisreset</code>
+        </p>
+        <p>
+            Ahora IIS debería tener instalado el AspNetCoreModule y ser capaz de alojar aplicaciones ASP.NET Core y .NET 5+.
+        </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
